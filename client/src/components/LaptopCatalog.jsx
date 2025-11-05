@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const API_BASE = 'https://ex-8.onrender.com';
+const API_BASE = 'https://ex-9-p2cs.onrender.com';
 
 function LaptopCatalog() {
   const [laptops, setLaptops] = useState([]);
