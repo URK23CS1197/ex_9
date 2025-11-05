@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+const API_BASE = 'https://ex-9-p2cs.onrender.com';
+
 function Registration({ onLoginSuccess }) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -11,11 +13,10 @@ function Registration({ onLoginSuccess }) {
   const handleRegistration = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:7000/api/register', {
+      const res = await axios.post(`${API_BASE}/api/register`, {
         fullName, email, username, password
       });
       setMessage(res.data.status);
-      // Optional: Auto-login after registration
       if (res.data.status === 'Registration successful' && typeof onLoginSuccess === 'function') {
         onLoginSuccess();
       }
