@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+const API_BASE = 'https://ex-9-p2cs.onrender.com';
+
 function Login({ onLoginSuccess }) {
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,10 +11,10 @@ function Login({ onLoginSuccess }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:7000/api/login', { usernameOrEmail, password });
+      const res = await axios.post(`${API_BASE}/api/login`, { usernameOrEmail, password });
       setMessage(res.data.status);
       if (res.data.status === 'Login successful') {
-        onLoginSuccess(); // Signal to App.jsx
+        onLoginSuccess();
       }
     } catch (err) {
       setMessage(err.response?.data?.status || "Login failed");
